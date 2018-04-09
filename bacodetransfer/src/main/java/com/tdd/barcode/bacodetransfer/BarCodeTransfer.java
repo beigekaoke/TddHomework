@@ -54,6 +54,7 @@ public class BarCodeTransfer {
 	}
 
 	public static boolean validBarCode(String barCode) {
+		barCode.startsWith("|");
 		return false;
 	}
 

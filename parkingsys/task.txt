@@ -1,0 +1,15 @@
+given:1 paking pace
+when:1 paking car
+then:0 free parking
+
+given:1 paking pace
+when:2 paking car
+then:throw noMoreFreeParkingException
+
+given:1 paking pace and 1 paking car(License number:55555)
+when: 1 pick up  car(License number:55555) 
+then:1 free parking
+
+given:1 paking pace and 1 paking car(License number:55555)
+when: 1 pick up  car(License number:66666) 
+then:throw wrongPickUpCarNumberException

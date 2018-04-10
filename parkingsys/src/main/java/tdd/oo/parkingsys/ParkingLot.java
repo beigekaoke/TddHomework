@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import tdd.oo.parkingsys.Exception.noMoreFreeParkingException;
-import tdd.oo.parkingsys.Exception.wrongPickUpCarNumberException;
+import tdd.oo.parkingsys.Exception.NoMoreFreeParkingException;
+import tdd.oo.parkingsys.Exception.WrongPickUpCarNumberException;
 
 public class ParkingLot {
 	
@@ -21,20 +21,20 @@ public class ParkingLot {
 		return spaceCount;
 	}
 	
-	public void parking(List<Car> cars) throws noMoreFreeParkingException{
+	public void parking(List<Car> cars) throws NoMoreFreeParkingException{
 		for(Car car:cars){
 			pakedCars.add(car);
 			spaceCount--;
 		}
 		if(spaceCount < 0){
-			throw new noMoreFreeParkingException();
+			throw new NoMoreFreeParkingException();
 		}
 	}
 
-	public void parkup(List<Car> cars) throws wrongPickUpCarNumberException {
+	public void parkup(List<Car> cars) throws WrongPickUpCarNumberException {
 		for(Car car:cars){
 			if(!pakedCars.contains(car)){
-				throw new wrongPickUpCarNumberException();
+				throw new WrongPickUpCarNumberException();
 			}
 			pakedCars.remove(car);
 			spaceCount++;

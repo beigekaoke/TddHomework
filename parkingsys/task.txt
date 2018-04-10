@@ -1,15 +1,39 @@
-given:1 paking pace
+given:1 paking space
 when:1 paking car
 then:0 free parking
 
-given:1 paking pace
+given:1 paking space
 when:2 paking car
 then:throw noMoreFreeParkingException
 
-given:1 paking pace and 1 paking car(License number:55555)
+given:1 paking space and 1 paking car(License number:55555)
 when: 1 pick up  car(License number:55555) 
 then:1 free parking
 
-given:1 paking pace and 1 paking car(License number:55555)
+given:1 paking space and 1 paking car(License number:55555)
 when: 1 pick up  car(License number:66666) 
 then:throw wrongPickUpCarNumberException
+
+
+
+------------------------------------------------------------------------------
+
+
+given:2 parking lots, parking lot A has 1 parking space, parking lot B has 1 parking space
+when:1 parking  car
+then:parking lot A has 0 free parking space
+
+given:2 parking lots, parking lot A has 1 parking space, parking lot B has 1 parking space
+when:2 parking  car
+then:parking lot A &  parking lot B has 0 free parking space
+
+given:2 parking lots, parking lot A has 1 parking space, parking lot B has 1 parking space
+when:3 parking  car
+then:throw noMoreFreeParkingException
+
+
+given:2 parking lots, parking lot A has 2 parking space, parking lot B has 2 parking space, parking lot A has parked 1 car,
+parking lot parked no car
+when:1 parking  car
+then:parking lot A has 0 free parking space &  parking lot B has 2 free parking space
+

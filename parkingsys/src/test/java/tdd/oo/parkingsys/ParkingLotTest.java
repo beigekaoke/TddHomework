@@ -17,49 +17,39 @@ public class ParkingLotTest {
 	@Test
 	public void given_1_paking_space_when_1_paking_car_then_0_free_parking() throws NoMoreFreeParkingException {
 		ParkingLot parkingLot = new ParkingLot(1);
-		List<Car> cars = new ArrayList<Car>();
 		Car car = new Car();
-		cars.add(car);
-		parkingLot.parking(cars);
+		parkingLot.parking(car);
 		Assert.assertEquals(0, parkingLot.getFreeSpace());
 	}
 	
 	@Test(expected = NoMoreFreeParkingException.class)  
 	public void given_1_paking_space_when_2_paking_car_then_throw_noMoreFreeParkingException() throws NoMoreFreeParkingException {
 		ParkingLot parkingLot = new ParkingLot(1);
-		List<Car> cars = new ArrayList<Car>();
 		Car car1 = new Car();
 		Car car2 = new Car();
-		cars.add(car1);
-		cars.add(car2);
-		parkingLot.parking(cars);
+		parkingLot.parking(car1);
+		parkingLot.parking(car2);
 	}
 	
 	@Test
 	public void given_1_paking_space_and_1_paking_car_with_number_5555_when_pick_up_1_car_with_number_5555_then_1_free_parking() throws NoMoreFreeParkingException, WrongPickUpCarNumberException {
 		ParkingLot parkingLot = new ParkingLot(1);
-		List<Car> cars = new ArrayList<Car>();
 		Car car = new Car();
 		car.setNumber("5555");
-		cars.add(car);
-		parkingLot.parking(cars);
-		parkingLot.parkup(cars);
+		parkingLot.parking(car);
+		parkingLot.parkup(car);
 		Assert.assertEquals(1, parkingLot.getFreeSpace());
 	}
 	
 	@Test(expected = WrongPickUpCarNumberException.class)
 	public void given_1_paking_space_and_1_paking_car_with_number_5555_when_pick_up_1_car_with_number_6666_then_throw_wrongPickUpCarNumberException() throws NoMoreFreeParkingException, WrongPickUpCarNumberException  {
 		ParkingLot parkingLot = new ParkingLot(1);
-		List<Car> cars = new ArrayList<Car>();
 		Car car = new Car();
 		car.setNumber("5555");
-		cars.add(car);
-		parkingLot.parking(cars);
-		List<Car> pickupcars = new ArrayList<Car>();
+		parkingLot.parking(car);
 		Car pickupcar = new Car();
 		pickupcar.setNumber("6666");
-		pickupcars.add(pickupcar);
-		parkingLot.parkup(pickupcars);
+		parkingLot.parkup(pickupcar);
 	}
 	
 	@Test

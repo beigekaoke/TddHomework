@@ -37,3 +37,35 @@ parking lot parked no car
 when:1 parking  car
 then:parking lot A has 0 free parking space &  parking lot B has 2 free parking space
 
+
+
+
+
+
+-------------------------------------smart sparking man--------------------
+
+given:lotA has 1 parking space,lot B has 1 parking space
+when:1 parking  car
+then:park random lot
+
+given:lotA has 2 parking space and has parked 1 car ,lot B has 2 parking space
+when:1 parking  car
+then:parked lotB
+
+given:lotA has 1 parking space and has parked 1 car,lot B has 1 parking space and has parked 1 car
+when:1 parking  car
+then:throw noMoreFreeParkingException
+
+-------------------------------------super sparking man--------------------
+
+given:lotA has 1 parking space,lot B has 3 parking space and has parked 1 car
+when:1 parking  car
+then:parked in lotA
+
+given:lotA has 1 parking space,lot B has 3 parking space 
+when:1 parking  car
+then:park random lot
+
+
+
+
